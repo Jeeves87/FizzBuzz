@@ -18,28 +18,10 @@ namespace FizzBuzz
             GetArray GetArray = new(Input1, Input2);
             int[] UserArray = GetArray.userArray;
             UserArray = GetArray.MakeArray();
-            foreach (int i in UserArray)
-            {
-                if ((i % 15) == 0)
-                {
-                    Console.WriteLine($"{i}- Fizz Buzz!");
-                    continue;
-                }
-
-
-                if ((i % 5) == 0)
-                {
-                    Console.WriteLine($"{i}- Buzz!");
-                    continue;
-                }
-                if ((i % 3) == 0)
-                {
-                    Console.WriteLine($"{i}- Fizz!");
-                    continue;
-                }
+            GetArray.Churn(UserArray);
 
                              
-            }
+            
                 
         }
     }

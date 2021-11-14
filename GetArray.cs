@@ -29,42 +29,61 @@ namespace FizzBuzz
                 }
             }
         }
-        
+
+        public bool Validate(string userStart, string userSize)
+        {
+
+            if (userStart != null || userSize != null)
+            {
+                int.TryParse(userStart, out UserStart);
+                int.TryParse(userSize, out UserSize);
+                return true;
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+
+
+        }
+
+
+
 
         public int[] MakeArray()
         {
-           int[] UserArray = Enumerable.Range(UserStart, UserSize).ToArray();
+            int[] UserArray = Enumerable.Range(UserStart, UserSize).ToArray();
             return UserArray;
         }
 
         public GetArray(string userStart, string userSize)
         {
-            bool success = int.TryParse(userStart, out UserStart);
-            if (success)
-            { Console.WriteLine("Your entry was a number!"); }
-            else
-            {
-                Console.WriteLine("Conversion failed");
-            }
-            bool success2 = int.TryParse(userSize, out UserSize);
-            if (success)
-            { Console.WriteLine("Your entry was a number!"); }
-            else
-            {
-                Console.WriteLine("Conversion failed");
-            }     
+            Validate(userStart, userSize);
         }
 
-    
-        
+        public void Churn(int[] UserArray)
+        {
+            foreach (int i in UserArray)
+            {
+                if ((i % 15) == 0)
+                {
+                    Console.WriteLine($"{i}- Fizz Buzz!");
+                    continue;
+                }
 
-    
-        
-        
 
+                if ((i % 5) == 0)
+                {
+                    Console.WriteLine($"{i}- Buzz!");
+                    continue;
+                }
+                if ((i % 3) == 0)
+                {
+                    Console.WriteLine($"{i}- Fizz!");
+                    continue;
+                }
+            }
 
-        
-
-
+        }
     }
 }
